@@ -1,0 +1,22 @@
+/* Page positional information */
+.Page {
+    position:absolute; 
+    top:50%; 
+    left: 50%; 
+    width: 1024px; 
+    height:768px; 
+    margin: -384px -384px -512px -512px;
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-clip:content-box;
+    background-position:center;
+    background-color: black;
+}
+  
+.Page > button::selection {
+    border-style: solid;
+}
+
+.Page > button:active  {
+    box-shadow: none;
+}

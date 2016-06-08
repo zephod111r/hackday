@@ -1,0 +1,46 @@
+[ 
+	{ "Type": "Template", "Title": "BackgroundButton", "Visible": false, "children": 
+	[
+		{ "Type": "ImageElement", "Src": "UpArrow4.png", "Shadow": { "position": { "x":3, "y":3, "width":4, "height":0 }, "colour": "rgba(15, 15, 15, 0.5)" }, "Colour": "rgba(255, 255, 255, 1)", "Position": [ 0, 0, 128, 32 ], "children": null, "actions": null }
+			], "actions": [
+				{ "Type": "MouseDown", "Code": "function(x, y) { if(this.renderable.getScreenPosition().contains(new Position(x,y))) this.renderable.colour = \"rgba(0, 0, 0, 0.5)\"; return false; }" },
+				{ "Type": "Init", "Code": "function(x, y) { this.savedcolour =  this.renderable.colour; }" },
+				{ "Type": "MouseUp", "Code": "function(x, y, active) { this.renderable.colour = this.savedcolour; return false; }" }
+			]  },
+	{ "Type": "Template", "Title": "Button", "Visible": false, "Colour": "#F8F8F8", "Shadow": { "position": { "x":3, "y":3, "width":4, "height":0 }, "colour": "rgba(15, 15, 15, 0.5)" }, "children": null, 
+			"actions": [
+				{ "Type": "MouseDown", "Code": "function(x, y) { if(this.renderable.getScreenPosition().contains(new Position(x,y))) { this.renderable.shadow = new ShadowElement( new Position(0,0), \"#000000\"); return true; } return false; }" },
+				{ "Type": "Init", "Code": "function(x, y) { this.savedshadow =  this.renderable.shadow; }" },
+				{ "Type": "MouseUp", "Code": "function(x, y, active) { this.renderable.shadow = this.savedshadow; return false; }" }
+			] },
+	{ "Type": "Menu", "Title": "MainMenu", "Clear":false, "Background": "rgba(255, 0, 0, 0.25)", "Position": [ 12, 12, 136, 152 ], 
+	"children": [
+			{ "Type": "ImageElement", "Src": null, "Colour": "rgba(255, 255, 255, 1)", "Position": [ 2, 2, 132, 148 ], "children": null, "actions": null },
+			{ "Type": "TextElement", "Template":"Button", "Text": "Beta Button 1", "TextAlign": "center", "Font": { "name": "Bold 18px Arial Black", "size":18 }, "Position": [ 4, 16, 128, 32 ], "children": null, "actions": null },
+			{ "Type": "TextElement", "Template":"Button", "Text": "Beta Button 2", "TextAlign": "center", "Font": { "name": "Bold 18px Arial Black", "size":18 }, "Position": [ 4, 48, 128, 32 ], "children": null, "actions": null },
+			{ "Type": "TextElement", "Template":"Button", "Text": "Beta Button 3", "TextAlign": "center", "Font": { "name": "Bold 18px Arial Black", "size":18 }, "Position": [ 4, 80, 128, 32 ], "children": null, "actions": null },
+			{ "Type": "TextElement", "Template":"Button", "Text": "Beta Button 4", "TextAlign": "center", "Font": { "name": "Bold 18px Arial Black", "size":18 }, "Position": [ 4, 112, 128, 32 ], "children": null, "actions": null }
+		], "actions": [
+				{ "Type": "MouseDown", "Code": "function(x, y) { if(this.renderable.getScreenPosition().contains(new Position(x,y))) { this.deltaposition = new Position( x, y ); this.isMoving = true; } return false; }" },
+				{ "Type": "Init", "Code": "function(x, y) { this.isMoving = false;  this.deltaposition = new Position( 0, 0 ); }" },
+				{ "Type": "MouseUp", "Code": "function(x, y, active) { this.isMoving = false; this.deltaposition = new Position( 0, 0 ); }" },
+				{ "Type": "MouseMove", "Code": "function(x, y, active) { if(this.isMoving == false) return; var current = new Position(x - this.deltaposition.x , y - this.deltaposition.y); this.renderable.position.x += current.x; this.renderable.position.y +=current.y; this.deltaposition = new Position(x , y); }" }
+			] },
+
+	{ "Type": "Menu", "Title": "Options", "Clear":false, "Background": "#000000", "Position": [ 312, 12, 136, 152 ], 
+	"children":  [
+			{ "Type": "ImageElement", "Src": null, "Shadow": { "position": { "x":3, "y":3, "width":4, "height":0 }, "colour": "rgba(15, 15, 15, 0.5)" }, "Colour": "rgba(255, 0, 0, 1)", "Position": [ 2, 2, 132, 148 ], "children": null, "actions": null },
+			{ "Type": "TextElement", "Template":"Button", "Text": "Button 1", "TextAlign": "center", "Font": { "name": "Bold 18px Arial Black", "size":18 }, "Position": [ 4, 16, 120, 32 ], "children": null, "actions": null },
+			{ "Type": "TextElement", "Template":"Button",  "Text": "Button 2", "TextAlign": "left", "Font": { "name": "Bold 18px Arial Black", "size":18 }, "Position": [ 4, 48,  120, 32 ], "children": null, "actions": null },
+			{ "Type": "TextElement", "Template":"Button",  "Text": "Button 3", "TextAlign": "left", "Font": { "name": "Bold 18px Arial Black", "size":18 }, "Position": [ 4, 80,  120, 32 ], "children": null, "actions": null },
+			{ "Type": "TextElement", "Template":"Button",  "Text": "Button 4", "TextAlign": "left", "Font": { "name": "Bold 18px Arial Black", "size":18 }, "Position": [ 4, 112, 120, 32 ], "children": null, "actions": null }
+		], "actions": [
+				{ "Type": "MouseDown", "Code": "function(x, y) { if(this.renderable.getScreenPosition().contains(new Position(x,y))) { this.deltaposition = new Position( x, y ); this.isMoving = true; } return false; }" },
+				{ "Type": "Init", "Code": "function(x, y) { this.isMoving = false;  this.deltaposition = new Position( 0, 0 ); }" },
+				{ "Type": "MouseUp", "Code": "function(x, y, active) { this.isMoving = false; this.deltaposition = new Position( 0, 0 ); }" },
+				{ "Type": "MouseMove", "Code": "function(x, y, active) { if(this.isMoving == false) return; var current = new Position(x - this.deltaposition.x , y - this.deltaposition.y); this.renderable.position.x += current.x; this.renderable.position.y +=current.y; this.deltaposition = new Position(x , y); }" }
+			]  }, 
+{ "Type": "Menu", "Title": "Controls", "Clear":false, "Background": "rgba(255, 0, 0, 0.25)", "Position": [ 0, 0, 0, 0 ], "children": null, "actions": null }, 
+{ "Type": "Menu", "Title": "Game", "Clear":false, "Background": "#000000", "Image": "", "Position": [ 0, 0, 0, 0 ], "children": null, "actions": null }, 
+{ "Type": "Menu", "Title": null, "Clear":false, "Background": "#000000", "Image": null, "Position": [ 0, 0, 0, 0 ], "children": null, "actions": null }
+]

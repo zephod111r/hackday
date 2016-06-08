@@ -1,0 +1,78 @@
+
+.GenerateLevelBackground {
+    position:absolute; 
+    top: 25%; 
+    left: 25%; 
+    width: 50%; 
+    height: 50%; 
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-clip:content-box;
+    background-position:center;
+    background-color: rgba(0, 2, 90, 0.78);
+    
+    border-radius: 25px;
+    border-style: hidden;
+
+    outline: none;
+    outline-style:hidden;
+}
+
+.GenerateLevelBackground > .Title {
+    position: relative;
+    width: 80%;
+    height: auto;
+    left: 50%;
+    margin-left: -40%;
+    margin-right: -40%;
+    margin-bottom: 12px;
+    color: #e5ef58;
+    font-size: 48px;
+    text-align:center;
+    font-style: normal;
+    border-style: hidden;
+    outline: none;
+    outline-style:hidden;
+}
+
+.GenerateLevelBackground > .Button {
+    position: relative;
+    width: 80%;
+    height: 32px;
+    border-radius: 15px;
+    left: 50%;
+    margin-left: -40%;
+    margin-right: -40%;
+    margin-bottom: 12px;
+    text-align:center;
+
+    padding: 0px 0px 0px 0px;
+
+    text-align:center;
+
+    font-size: 18px;
+    font-style: normal;
+    text-decoration: solid;
+    outline: none;
+    outline-style:hidden;
+}
+
+.GenerateLevelBackground > .Enabled {
+    box-shadow: rgba(64,0,64,0.5) -3px -5px inset;
+    color: gold;
+    background-color: purple;
+}
+
+.GenerateLevelBackground > .Disabled {
+    box-shadow: none;
+    color:darkgrey;
+    background-color: mediumpurple;
+}
+    
+.GenerateLevelBackground > button::selection {
+    border-style: solid;
+}
+
+.GenerateLevelBackground > button:active  {
+    box-shadow: none;
+}

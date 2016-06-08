@@ -1,0 +1,61 @@
+
+.MainMenuBackground {
+    position:absolute; 
+    top: 25%; 
+    left: 25%; 
+    width: 50%; 
+    height: 50%; 
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-clip:content-box;
+    background-position:center;
+    background-color: rgba(0, 2, 90, 0.78);
+    
+    border-radius: 5%;
+    border-style: hidden;
+
+    outline: none;
+    outline-style:hidden;
+}
+
+.MainMenuBackground > .Title {
+    position: relative;
+    width: 80%;
+    height: auto;
+    left: 50%;
+    margin-left: -40%;
+    margin-right: -40%;
+    margin-bottom: 12px;
+    color: #e5ef58;
+    font-size: 48px;
+    text-align:center;
+    font-style: normal;
+    border-style: hidden;
+    outline: none;
+    outline-style:hidden;
+    text-transform:uppercase;
+}
+
+.MainMenuBackground > .Button {
+    position: relative;
+    width: 80%;
+    left: 50%;
+    margin-left: -40%;
+    margin-right: -40%;
+    margin-bottom: 12px;
+}
+
+.MainMenuBackground > .Disabled {
+    box-shadow: none;
+    color:darkgrey;
+    border: none;
+    background-color: mediumpurple;
+}
+    
+.MainMenuBackground > button::selection {
+    border-style: solid;
+}
+
+.MainMenuBackground > button:active  {
+    box-shadow: none;
+}

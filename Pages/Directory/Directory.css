@@ -1,0 +1,8 @@
+
+.Directory > .Icon {
+    position:relative;
+    left:50%;
+    margin-left:-64px;
+    margin-right:-64px;
+    top: auto;
+}

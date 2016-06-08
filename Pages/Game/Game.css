@@ -1,0 +1,27 @@
+.Game {
+
+}
+
+.Game > .Button {
+    position: relative;
+    width: 80%;
+    left: 50%;
+    margin-left: -40%;
+    margin-right: -40%;
+    margin-bottom: 12px;
+}
+
+.Game > .Disabled {
+    box-shadow: none;
+    color:darkgrey;
+    border: none;
+    background-color: mediumpurple;
+}
+    
+.Game > button::selection {
+    border-style: solid;
+}
+
+.Game > button:active  {
+    box-shadow: none;
+}

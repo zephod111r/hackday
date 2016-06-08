@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Shaders">
+   </FileRef>
+   <FileRef
+      location = "group:css">
+   </FileRef>
+   <FileRef
+      location = "group:Game">
+   </FileRef>
+   <FileRef
+      location = "group:images">
+   </FileRef>
+   <FileRef
+      location = "group:index.html">
+   </FileRef>
+   <FileRef
+      location = "group:js">
+   </FileRef>
+   <FileRef
+      location = "group:Pages">
+   </FileRef>
+   <FileRef
+      location = "group:Rendering">
+   </FileRef>
+   <FileRef
+      location = "group:resources">
+   </FileRef>
+   <FileRef
+      location = "group:runserver">
+   </FileRef>
+   <FileRef
+      location = "group:Scripts">
+   </FileRef>
+   <FileRef
+      location = "group:ScriptSite">
+   </FileRef>
+</Workspace>

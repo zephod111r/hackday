@@ -1,0 +1,17 @@
+{
+	"load_test_page": "Load Test Page",
+	"load_alternative_language": "Reload in en-US",
+	"do_nothing": "Do Nothing",
+	"en-GB": "English (British)",
+	"en-US": "English (USA)",
+	"id_Back": "Back",
+	"load_Image_Directory": "Image Viewer",
+	"load_Image_Slideshow": "Image Slideshow",
+	"game_Load_Game": "Load Game",
+	"game_New_Game": "New Game",
+	"game_Male": "Male",
+	"game_Female": "Female",
+	"game_Unknown_User": "Unknown",
+	"game_Submit": "Submit",
+	"Main_Menu_Press_Me": "Start Here!"
+}

@@ -1,0 +1,173 @@
+/* CSS style for the loading spinner.*/
+
+.spinner {
+    position: absolute;
+    width: 128px;
+    height: 128px;
+    top: 50%;
+    left: 50%;
+    margin: -64px -64px -64px -64px;
+    z-index: 7000;
+}
+
+.loadingSpinner {
+    position: absolute;
+    background-color: #7736C2;
+    width: 36px;
+    height: 36px;
+    -moz-border-radius: 38px;
+    -moz-animation-name: bounce_loadingSpinner;
+    -moz-animation-duration: 1.1199999999999999s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-direction: linear;
+    -webkit-border-radius: 38px;
+    -webkit-animation-name: bounce_loadingSpinner;
+    -webkit-animation-duration: 1.1199999999999999s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: linear;
+    -ms-border-radius: 38px;
+    -ms-animation-name: bounce_loadingSpinner;
+    -ms-animation-duration: 1.1199999999999999s;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-direction: linear;
+    -o-border-radius: 38px;
+    -o-animation-name: bounce_loadingSpinner;
+    -o-animation-duration: 1.1199999999999999s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-direction: linear;
+    border-radius: 38px;
+    animation-name: bounce_loadingSpinner;
+    animation-duration: 1.1199999999999999s;
+    animation-iteration-count: infinite;
+    animation-direction: linear;
+}
+
+.loadingSpinner_1G {
+    left: 52px;
+    top: 8px;
+    -moz-animation-delay: 1.26s;
+    -webkit-animation-delay: 1.26s;
+    -ms-animation-delay: 1.26s;
+    -o-animation-delay: 1.26s;
+    animation-delay: 1.26s;
+}
+
+.loadingSpinner_2G {
+    left: 78px;
+    top: 30px;
+    -moz-animation-delay: 1.1199999999999999s;
+    -webkit-animation-delay: 1.1199999999999999s;
+    -ms-animation-delay: 1.1199999999999999s;
+    -o-animation-delay: 1.1199999999999999s;
+    animation-delay: 1.1199999999999999s;
+}
+
+.loadingSpinner_3G {
+    left: 94px;
+    top: 58px;
+    -moz-animation-delay: 0.9799999999999999s;
+    -webkit-animation-delay: 0.9799999999999999s;
+    -ms-animation-delay: 0.9799999999999999s;
+    -o-animation-delay: 0.9799999999999999s;
+    animation-delay: 0.9799999999999999s;
+}
+
+.loadingSpinner_4G {
+    left: 88px;
+    top: 86px;
+    -moz-animation-delay: 0.8399999999999999s;
+    -webkit-animation-delay: 0.8399999999999999s;
+    -ms-animation-delay: 0.8399999999999999s;
+    -o-animation-delay: 0.8399999999999999s;
+    animation-delay: 0.8399999999999999s;
+}
+
+.loadingSpinner_5G {
+    left: 54px;
+    top: 94px;
+    -moz-animation-delay: 0.7s;
+    -webkit-animation-delay: 0.7s;
+    -ms-animation-delay: 0.7s;
+    -o-animation-delay: 0.7s;
+    animation-delay: 0.7s;
+}
+
+.loadingSpinner_6G {
+    left: 10px;
+    top: 62px;
+    -moz-animation-delay: 0.5599999999999999s;
+    -webkit-animation-delay: 0.5599999999999999s;
+    -ms-animation-delay: 0.5599999999999999s;
+    -o-animation-delay: 0.5599999999999999s;
+    animation-delay: 0.5599999999999999s;
+}
+
+.loadingSpinner_7G {
+    left: 0px;
+    top: 18px;
+    -moz-animation-delay: 0.41999999999999993s;
+    -webkit-animation-delay: 0.41999999999999993s;
+    -ms-animation-delay: 0.41999999999999993s;
+    -o-animation-delay: 0.41999999999999993s;
+    animation-delay: 0.41999999999999993s;
+}
+
+.loadingSpinner_8G {
+    left: 22px;
+    top: 0px;
+    -moz-animation-delay: 1.4s;
+    -webkit-animation-delay: 1.4s;
+    -ms-animation-delay: 1.4s;
+    -o-animation-delay: 1.4s;
+    animation-delay: 1.4s;
+}
+
+@-moz-keyframes bounce_loadingSpinner {
+    0% {
+        -moz-transform: scale(1);
+    }
+
+    100% {
+        -moz-transform: scale(.3);
+    }
+}
+
+@-webkit-keyframes bounce_loadingSpinner {
+    0% {
+        -webkit-transform: scale(1);
+    }
+
+    100% {
+        -webkit-transform: scale(.3);
+    }
+}
+
+@-ms-keyframes bounce_loadingSpinner {
+    0% {
+        -ms-transform: scale(1);
+    }
+
+    100% {
+        -ms-transform: scale(.3);
+    }
+}
+
+@-o-keyframes bounce_loadingSpinner {
+    0% {
+        -o-transform: scale(1);
+    }
+
+    100% {
+        -o-transform: scale(.3);
+    }
+}
+
+@keyframes bounce_loadingSpinner {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(.3);
+    }
+}

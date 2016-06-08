@@ -1,0 +1,146 @@
+.Visible {
+    display: block;
+}
+
+.Hidden {
+    display: none;
+}
+
+.Disabled {
+    color: InactiveCaptionText;
+    border-color: InactiveBorder
+}
+
+.Enabled {
+}
+
+.Text {
+    
+    color: #e5ef58;
+    font-size: 48px;
+    text-align:center;
+    font-style: normal;
+    outline: none;
+    outline-style:hidden;
+    text-transform:uppercase;
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-clip:content-box;
+    background-position:center;
+    background-color: rgba(0, 2, 90, 0.78);
+    
+    border-radius: 5%;
+    border-style: hidden;
+}
+
+.Button {
+    position:relative;
+    border-radius: 15px;
+    color:gold;
+    text-align:center;
+    padding: 0px 0px 0px 0px;
+    text-transform: uppercase;
+    text-align:center;
+    font-size: 18px;
+    font-style: normal;
+    text-decoration: solid;
+    outline: none;
+    outline-style:hidden;
+    background-color: purple;
+    height: 32px;
+    border-radius: 15px;
+    box-shadow: rgba(64,0,64,0.5) -2px -4px inset;
+    border: 2px groove gold
+}
+
+.NumberInput {
+    width: 104px;
+}
+
+.NumberInput > .Button {
+    width: 20px;
+    height: 20px;
+    outline: none;
+}
+
+.NumberInput > .Minus {
+    float:left;
+    left: 0px;
+    border-right-style: none;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.NumberInput > .Plus {
+    float:right;
+    left: 0px;
+    border-left-style: none;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.NumberInput > .Input {
+    position: relative;
+    left: 0px;
+    right: 64px;
+    width: 64px;
+    height: 14px;
+    border-top: 3px ridge;
+    border-bottom: 3px ridge;
+    border-left: none;
+    border-right: none;
+    text-align:right;
+    font-family:'Comic Sans MS';
+    padding: 0px;
+    margin: 0px;
+    outline:none;
+    border-color: gold;
+    background-color:purple;
+    color: gold;
+}
+
+.Icon {
+    width: 128px;
+    height: 96px;
+    border-radius: 22px;
+}
+
+.BackButton {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 64px;
+    height: 64px;
+    text-align:center;
+    border-radius: 50%;
+    margin: 4px;
+}
+
+.Blurb {
+    width:178px;
+    float:left;
+    text-anchor:middle;
+    text-align:justify;
+    text-overflow:ellipsis;
+    text-wrap:avoid;
+    font-size:15px;
+    font-family:sans-serif;
+    font-style:italic;
+    height: 100%;
+    left: 15px;
+    top: 15px;
+    padding: 7px;
+    border: 2px groove black;
+    border-radius: 10px;
+}
+
+.DonateButton {
+    position:relative;
+    margin-left: -37px;
+    margin-right: -37px;
+    left: 50%;
+}

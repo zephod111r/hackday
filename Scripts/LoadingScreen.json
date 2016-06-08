@@ -1,0 +1,26 @@
+[ 
+	{ "Type": "Template", "Title": "Button", "Visible": false, "Colour": "rgba(200, 200, 200, 0.85)", "Shadow": { "position": { "x":3, "y":3, "width":4, "height":0 }, "colour": "rgba(15, 15, 15, 0.5)" }, "children": null, 
+		"actions": [
+			{ "Type": "MouseDown", "Code": "function(x, y) { if(this.renderable.getScreenPosition().contains(new Position(x,y))) { this.renderable.shadow = new ShadowElement( new Position(0,0), \"#000000\"); return true; } return false; }" },
+			{ "Type": "Init", "Code": "function(x, y) { this.savedshadow =  this.renderable.shadow; }" },
+			{ "Type": "MouseUp", "Code": "function(x, y, active) { this.renderable.shadow = this.savedshadow; return false; }" }
+		] 
+	},
+	{ "Type": "Menu", "Title": "LoadingBar", "Clear":false, "Background": "rgba(200, 0, 0, 0.15)", "Position": [ 12, 12, 320, 152 ], 
+		"children": [
+			{ "Type": "ImageElement", "Src": null, "Colour": "rgba(55, 55, 55, 0.5)", "Position": [ 2, 4, 2, 42 ], "children": null, 
+				"actions": [
+					{ "Type": "Init", "Code": "function(x, y) { this.width = 316; }" },
+					{ "Type": "Update", "Code": "function(x, y, active) { this.renderable.position.width += 1; if(this.renderable.position.width > this.width) this.renderable.position.width = 2; }" } 
+				] },
+			{ "Type": "TextElement", "Template":"Button", "Text": "Please be patient while I\ncomplete the code for this site!", "TextAlign": "center", "Font": { "name": "Bold 18px Arial Black", "size":18 }, "Position": [ 4, 4, 308, 38 ], "children": null, "actions": null }
+		], 
+		"actions": [
+			{ "Type": "MouseDown", "Code": "function(x, y) { if(this.renderable.getScreenPosition().contains(new Position(x,y))) { this.deltaposition = new Position( x, y ); this.isMoving = true; } return false; }" },
+			{ "Type": "Init", "Code": "function(x, y) { this.isMoving = false;  this.deltaposition = new Position( 0, 0 ); }" },
+			{ "Type": "MouseUp", "Code": "function(x, y, active) { this.isMoving = false; this.deltaposition = new Position( 0, 0 ); }" },
+			{ "Type": "MouseMove", "Code": "function(x, y, active) { if(this.isMoving == false) return; var current = new Position(x - this.deltaposition.x , y - this.deltaposition.y); this.renderable.position.x += current.x; this.renderable.position.y +=current.y; this.deltaposition = new Position(x , y); }" }
+			
+		] 
+	}
+]
