@@ -16,7 +16,7 @@ Object.defineProperties(local, {
                 for(var index in shaderList) {
                     var item = shaderList[index];
                     if(!!item) {
-                        item.Update( delta );
+                        item.material.uniforms.time.value += ( delta );
                     }
                 }
             },

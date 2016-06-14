@@ -33,6 +33,12 @@ var renderObject = Class.Design(function(object, makeVisible){
             enumerable: false,
             configurable: true
         },
+        scale: {
+            value: null,
+            writable: false,
+            enumerable: false,
+            configurable: true
+        },
         dirty: {
             value: true,
             writable: true,
@@ -95,6 +101,11 @@ var renderObject = Class.Design(function(object, makeVisible){
                 this.object.rotation.y = this.rotation.y;
                 this.object.rotation.z = this.rotation.z;
             }
+            if(this.scale) {
+                this.object.scale.x = this.scale.x;
+                this.object.scale.y = this.scale.y;
+                this.object.scale.z = this.scale.z;
+            }
             this.object.updateMatrixWorld();
         },
         writable: false,
@@ -128,6 +139,22 @@ var renderObject = Class.Design(function(object, makeVisible){
         },
         set: function(rotation){
             Object.defineProperty(this, "rotation", { value: rotation });
+            this.dirty = true;
+        },
+        enumerable: true,
+        configurable: false
+    },
+    Scale:
+    {
+        get: function() {
+            if(!this.scale){
+                this.Scale = new THREE.Vector3( 0, 0, 0);
+            }
+            
+            return this.scale;
+        },
+        set: function(scale){
+            Object.defineProperty(this, "scale", { value: scale });
             this.dirty = true;
         },
         enumerable: true,

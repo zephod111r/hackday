@@ -11,7 +11,7 @@ local.Floor = Class.Design(function floorConstructor(arenaSize){
 
     for( var i = 0; i < arenaSize; ++i) {
         for( var j = 0; j < arenaSize; ++j) {
-            var mat = new THREE.MeshBasicMaterial({ color: new THREE.Color( 0x2E2B19 )});
+            var mat = new THREE.MeshBasicMaterial({ color: new THREE.Color( 0x112200 )});
             var mesh = new THREE.Mesh(geo, mat);
             mesh.recieveShadow = true;
     
@@ -26,9 +26,9 @@ local.Floor = Class.Design(function floorConstructor(arenaSize){
             floor.Rotation = { x:-(Math.PI/2), y:0, z:zrot };
 
             // floor plane
-            for(var layer = 0; layer < 8; ++layer) {
+            for(var layer = 0; layer < 10; ++layer) {
                 var mat = new THREE.MeshBasicMaterial( {
-                    color: new THREE.Color().setHSL( 0.3, 0.75, (layer / 15) * 0.4 + 0.1 ),
+                    color: new THREE.Color().setHSL( 0.2, 0.65, ((layer / 15) * 0.4) + 0.1 ),
                     map: texture,
                     depthTest: false,
                     depthWrite: false,

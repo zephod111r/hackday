@@ -8,9 +8,8 @@
                 this.clock = new THREE.Clock();
                 
                 var size = 0.65;
-                var torusmaterial = new THREE.ShaderMaterial( Shaders.Lava );
                 var torusgeom = new THREE.TorusGeometry( size, 0.3, 30, 30 ); // CircleGeometry(size, 64);
-                var torusmesh = new THREE.Mesh(torusgeom, torusmaterial);
+                var torusmesh = new THREE.Mesh(torusgeom, Shaders.Lava.material);
          
                 var light = new THREE.HemisphereLight(0x66ccff, 0x00aa00, 1);
                 new Rendering.Renderable(light, true);
@@ -32,7 +31,8 @@
 
                 var torus = new Rendering.Renderable(torusmesh, true);
                 torus.Rotation.x = -Mathematics.convertDegreesToRadians(15);
-                torus.Position.y = 10;
+                torus.Position = { x: 0, y: 25, z: 0 };
+                torus.Scale = { x: 25, y: 25, z: 25 };
                 
                 if ( !Detector.webgl ) Detector.addGetWebGLMessage();
                 
@@ -93,7 +93,7 @@
         },
         Animate:{
             value: function(){
-                var delta = 5 * this.clock.getDelta();
+                var delta = this.clock.getDelta();
                 this.requestId = requestAnimationFrame( this.Animate.bind(this) );
                 this.Update(delta);
                 this.Render(delta);
