@@ -15,7 +15,6 @@
                 var light = new THREE.HemisphereLight(0x66ccff, 0x00aa00, 1);
                 new Rendering.Renderable(light, true);
                 
-                
                 var spotLight = new THREE.SpotLight(0xffffff, 1);
                 spotLight.castShadow = true;
                 spotLight.distance = 200;
