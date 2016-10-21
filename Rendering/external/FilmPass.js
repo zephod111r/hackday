@@ -1,22 +1,19 @@
-(function(Root) {
- 
- Root.THREE = Root.THREE || {};
 /**
  * @author alteredq / http://alteredqualia.com/
  */
 
-Root.THREE.FilmPass = function ( noiseIntensity, scanlinesIntensity, scanlinesCount, grayscale ) {
+THREE.FilmPass = function ( noiseIntensity, scanlinesIntensity, scanlinesCount, grayscale ) {
 
-	Root.THREE.Pass.call( this );
+	THREE.Pass.call( this );
 
-	if ( Root.THREE.FilmShader === undefined )
+	if ( THREE.FilmShader === undefined )
 		console.error( "THREE.FilmPass relies on THREE.FilmShader" );
 
-	var shader = Root.THREE.FilmShader;
+	var shader = THREE.FilmShader;
 
-	this.uniforms = Root.THREE.UniformsUtils.clone( shader.uniforms );
+	this.uniforms = THREE.UniformsUtils.clone( shader.uniforms );
 
-	this.material = new Root.THREE.ShaderMaterial( {
+	this.material = new THREE.ShaderMaterial( {
 
 		uniforms: this.uniforms,
 		vertexShader: shader.vertexShader,
@@ -29,17 +26,17 @@ Root.THREE.FilmPass = function ( noiseIntensity, scanlinesIntensity, scanlinesCo
 	if ( scanlinesIntensity !== undefined ) this.uniforms.sIntensity.value = scanlinesIntensity;
 	if ( scanlinesCount !== undefined ) this.uniforms.sCount.value = scanlinesCount;
 
-	this.camera = new Root.THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
-	this.scene  = new Root.THREE.Scene();
+	this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+	this.scene  = new THREE.Scene();
 
-	this.quad = new Root.THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
+	this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
 	this.scene.add( this.quad );
 
 };
 
-Root.THREE.FilmPass.prototype = Object.assign( Object.create( Root.THREE.Pass.prototype ), {
+THREE.FilmPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
 
-	constructor: Root.THREE.FilmPass,
+	constructor: THREE.FilmPass,
 
 	render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
@@ -61,4 +58,3 @@ Root.THREE.FilmPass.prototype = Object.assign( Object.create( Root.THREE.Pass.pr
 	}
 
 } );
-  })(this);

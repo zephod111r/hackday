@@ -10,6 +10,7 @@
                 var size = 0.65;
                 var torusgeom = new THREE.TorusGeometry( size, 0.3, 30, 30 ); // CircleGeometry(size, 64);
                 var torusmesh = new THREE.Mesh(torusgeom, Shaders.Lava.material);
+                //var torusmesh = new THREE.Mesh(torusgeom, new THREE.MeshBasicMaterial({ color: new THREE.Color( 0xFF4400 )}));
          
                 var light = new THREE.HemisphereLight(0x66ccff, 0x00aa00, 1);
                 new Rendering.Renderable(light, true);
@@ -27,12 +28,14 @@
                 spotLight.position.set(10, 35, 10);
                 new Rendering.Renderable(spotLight, true);
 
-                new Game.Floor(1000);
 
                 var torus = new Rendering.Renderable(torusmesh, true);
                 torus.Rotation.x = -Mathematics.convertDegreesToRadians(15);
                 torus.Position = { x: 0, y: 25, z: 0 };
                 torus.Scale = { x: 25, y: 25, z: 25 };
+                
+                new Game.Sky(1000);
+                new Game.Floor(1000);
                 
                 if ( !Detector.webgl ) Detector.addGetWebGLMessage();
                 
@@ -49,21 +52,31 @@
                 
                 // camera
                 this.camera = new THREE.PerspectiveCamera(60, 4/3, 1, 1000);
-                this.camera.position.set(0, 75, 100);
-                this.camera.lookAt(new THREE.Vector3(0, 0, 0));
-                
-                this.renderModel = new THREE.RenderPass( Rendering.Scene.Scene, this.camera );
-                //this.renderModel.clearColor = new THREE.Color(0.1, 0.2, 0.7);
-                
-                this.effectBloom = new THREE.BloomPass( 1.25 );
-                
-                this.effectFilm = new THREE.FilmPass( 0.20, 0.95, 2048, false );
-                this.effectFilm.renderToScreen = true;
+                this.camera.position.set(0, 2, 250);
+                this.camera.lookAt(new THREE.Vector3(0, 1.5, 0));
                 
                 this.composer = new THREE.EffectComposer( this.renderer );
+                
+                this.effectShaderLava1 = new THREE.ShaderPass(Shaders.Lava.material, 1);
+                this.effectShaderLava2 = new THREE.ShaderPass(Shaders.Lava.material, 2);
+                
+                this.composer.addPass( this.effectShaderLava1 );
+                this.composer.addPass( this.effectShaderLava2 );
+                
+                this.renderModel = new THREE.RenderPass( Rendering.Scene.Scene, this.camera );
+                this.renderModel.clearColor = new THREE.Color(0.0, 0.0, 0.0);
+                this.renderModel.renderToScreen = true;
                 this.composer.addPass( this.renderModel );
-                this.composer.addPass( this.effectBloom );
-                this.composer.addPass( this.effectFilm );
+                
+                
+                //this.effectBloom = new THREE.BloomPass( 1.25 );
+                //this.this.effectBloom.renderToScreen = true;
+                //this.composer.addPass( this.effectBloom );
+                
+                //this.effectFilm = new THREE.FilmPass( 0.20, 0.95, 2048, false );
+                //this.effectFilm.renderToScreen = true;
+                //this.composer.addPass( this.effectFilm );
+                
                 
                 window.addEventListener( 'resize', this.onWindowResize.bind(this), false );
                 
@@ -101,6 +114,7 @@
         },
         Render: {
             value: function(delta) {
+                this.renderer.clear();
                 this.composer.render( delta );
             }
         },

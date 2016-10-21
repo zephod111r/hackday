@@ -1,12 +1,8 @@
-(function(Root) {
- 
- Root.THREE = Root.THREE || {};
-
 /**
  * @author alteredq / http://alteredqualia.com/
  */
 
-Root.THREE.EffectComposer = function ( renderer, renderTarget ) {
+THREE.EffectComposer = function ( renderer, renderTarget ) {
 
 	this.renderer = renderer;
 
@@ -19,7 +15,7 @@ Root.THREE.EffectComposer = function ( renderer, renderTarget ) {
 			stencilBuffer: false
 		};
 		var size = renderer.getSize();
-		renderTarget = new Root.THREE.WebGLRenderTarget( size.width, size.height, parameters );
+		renderTarget = new THREE.WebGLRenderTarget( size.width, size.height, parameters );
 
 	}
 
@@ -34,11 +30,11 @@ Root.THREE.EffectComposer = function ( renderer, renderTarget ) {
 	if ( THREE.CopyShader === undefined )
 		console.error( "THREE.EffectComposer relies on THREE.CopyShader" );
 
-	this.copyPass = new Root.THREE.ShaderPass( THREE.CopyShader );
+	this.copyPass = new THREE.ShaderPass( THREE.CopyShader );
 
 };
 
-Object.assign( Root.THREE.EffectComposer.prototype, {
+Object.assign( THREE.EffectComposer.prototype, {
 
 	swapBuffers: function() {
 
@@ -65,9 +61,6 @@ Object.assign( Root.THREE.EffectComposer.prototype, {
 
 	render: function ( delta ) {
 
-		this.writeBuffer = this.renderTarget1;
-		this.readBuffer = this.renderTarget2;
-
 		var maskActive = false;
 
 		var pass, i, il = this.passes.length;
@@ -76,7 +69,7 @@ Object.assign( Root.THREE.EffectComposer.prototype, {
 
 			pass = this.passes[ i ];
 
-			if ( ! pass.enabled ) continue;
+			if ( pass.enabled === false ) continue;
 
 			pass.render( this.renderer, this.writeBuffer, this.readBuffer, delta, maskActive );
 
@@ -98,13 +91,17 @@ Object.assign( Root.THREE.EffectComposer.prototype, {
 
 			}
 
-			if ( pass instanceof Root.THREE.MaskPass ) {
+			if ( THREE.MaskPass !== undefined ) {
 
-				maskActive = true;
+				if ( pass instanceof THREE.MaskPass ) {
 
-			} else if ( pass instanceof Root.THREE.ClearMaskPass ) {
+					maskActive = true;
 
-				maskActive = false;
+				} else if ( pass instanceof THREE.ClearMaskPass ) {
+
+					maskActive = false;
+
+				}
 
 			}
 
@@ -149,7 +146,7 @@ Object.assign( Root.THREE.EffectComposer.prototype, {
 } );
 
 
-Root.THREE.Pass = function () {
+THREE.Pass = function () {
 
 	// if set to true, the pass is processed by the composer
 	this.enabled = true;
@@ -165,7 +162,7 @@ Root.THREE.Pass = function () {
 
 };
 
-Object.assign( Root.THREE.Pass.prototype, {
+Object.assign( THREE.Pass.prototype, {
 
 	setSize: function( width, height ) {},
 
@@ -176,5 +173,3 @@ Object.assign( Root.THREE.Pass.prototype, {
 	}
 
 } );
- 
- })(this);
