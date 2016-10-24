@@ -1,8 +1,13 @@
 /**
  * @author alteredq / http://alteredqualia.com/
+ * Modified to add safety for initialisation order.
  */
 
-THREE.MaskPass = function ( scene, camera ) {
+(function(Root) {
+ 
+Root.THREE = Root.THREE || {};
+
+Root.THREE.MaskPass = function ( scene, camera ) {
 
 	THREE.Pass.call( this );
 
@@ -16,9 +21,9 @@ THREE.MaskPass = function ( scene, camera ) {
 
 };
 
-THREE.MaskPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
+Root.THREE.MaskPass.prototype = Object.assign( Object.create( Root.THREE.Pass.prototype ), {
 
-	constructor: THREE.MaskPass,
+	constructor: Root.THREE.MaskPass,
 
 	render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
@@ -76,17 +81,17 @@ THREE.MaskPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ),
 } );
 
 
-THREE.ClearMaskPass = function () {
+Root.THREE.ClearMaskPass = function () {
 
-	THREE.Pass.call( this );
+	Root.THREE.Pass.call( this );
 
 	this.needsSwap = false;
 
 };
 
-THREE.ClearMaskPass.prototype = Object.create( THREE.Pass.prototype );
+Root.THREE.ClearMaskPass.prototype = Object.create( Root.THREE.Pass.prototype );
 
-Object.assign( THREE.ClearMaskPass.prototype, {
+Object.assign( Root.THREE.ClearMaskPass.prototype, {
 
 	render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
@@ -95,3 +100,5 @@ Object.assign( THREE.ClearMaskPass.prototype, {
 	}
 
 } );
+
+})(this);

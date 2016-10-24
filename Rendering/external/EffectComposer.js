@@ -2,20 +2,24 @@
  * @author alteredq / http://alteredqualia.com/
  */
 
-THREE.EffectComposer = function ( renderer, renderTarget ) {
+(function(Root) {
+ 
+Root.THREE = Root.THREE || {};
+
+Root.THREE.EffectComposer = function ( renderer, renderTarget ) {
 
 	this.renderer = renderer;
 
 	if ( renderTarget === undefined ) {
 
 		var parameters = {
-			minFilter: THREE.LinearFilter,
-			magFilter: THREE.LinearFilter,
-			format: THREE.RGBAFormat,
+			minFilter: Root.THREE.LinearFilter,
+			magFilter: Root.THREE.LinearFilter,
+			format: Root.THREE.RGBAFormat,
 			stencilBuffer: false
 		};
 		var size = renderer.getSize();
-		renderTarget = new THREE.WebGLRenderTarget( size.width, size.height, parameters );
+		renderTarget = new Root.THREE.WebGLRenderTarget( size.width, size.height, parameters );
 
 	}
 
@@ -27,14 +31,14 @@ THREE.EffectComposer = function ( renderer, renderTarget ) {
 
 	this.passes = [];
 
-	if ( THREE.CopyShader === undefined )
+	if ( Root.THREE.CopyShader === undefined )
 		console.error( "THREE.EffectComposer relies on THREE.CopyShader" );
 
-	this.copyPass = new THREE.ShaderPass( THREE.CopyShader );
+	this.copyPass = new Root.THREE.ShaderPass( Root.THREE.CopyShader );
 
 };
 
-Object.assign( THREE.EffectComposer.prototype, {
+Object.assign( Root.THREE.EffectComposer.prototype, {
 
 	swapBuffers: function() {
 
@@ -91,13 +95,13 @@ Object.assign( THREE.EffectComposer.prototype, {
 
 			}
 
-			if ( THREE.MaskPass !== undefined ) {
+			if ( Root.THREE.MaskPass !== undefined ) {
 
 				if ( pass instanceof THREE.MaskPass ) {
 
 					maskActive = true;
 
-				} else if ( pass instanceof THREE.ClearMaskPass ) {
+				} else if ( pass instanceof Root.THREE.ClearMaskPass ) {
 
 					maskActive = false;
 
@@ -146,7 +150,7 @@ Object.assign( THREE.EffectComposer.prototype, {
 } );
 
 
-THREE.Pass = function () {
+Root.THREE.Pass = function () {
 
 	// if set to true, the pass is processed by the composer
 	this.enabled = true;
@@ -162,7 +166,7 @@ THREE.Pass = function () {
 
 };
 
-Object.assign( THREE.Pass.prototype, {
+Object.assign( Root.THREE.Pass.prototype, {
 
 	setSize: function( width, height ) {},
 
@@ -173,3 +177,4 @@ Object.assign( THREE.Pass.prototype, {
 	}
 
 } );
+})(this);

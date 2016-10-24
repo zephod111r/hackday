@@ -2,13 +2,17 @@
  * @author alteredq / http://alteredqualia.com/
  */
 
-THREE.ShaderPass = function ( shader, textureID ) {
+(function(Root) {
+ 
+Root.THREE = Root.THREE || {};
 
-	THREE.Pass.call( this );
+Root.THREE.ShaderPass = function ( shader, textureID ) {
+
+	Root.THREE.Pass.call( this );
 
 	this.textureID = ( textureID !== undefined ) ? textureID : "tDiffuse";
 
-	if ( shader instanceof THREE.ShaderMaterial ) {
+	if ( shader instanceof Root.THREE.ShaderMaterial ) {
 
 		this.uniforms = shader.uniforms;
 
@@ -16,9 +20,9 @@ THREE.ShaderPass = function ( shader, textureID ) {
 
 	} else if ( shader ) {
 
-		this.uniforms = THREE.UniformsUtils.clone( shader.uniforms );
+		this.uniforms = Root.THREE.UniformsUtils.clone( shader.uniforms );
 
-		this.material = new THREE.ShaderMaterial( {
+		this.material = new Root.THREE.ShaderMaterial( {
 
 			defines: shader.defines || {},
 			uniforms: this.uniforms,
@@ -29,17 +33,17 @@ THREE.ShaderPass = function ( shader, textureID ) {
 
 	}
 
-	this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
-	this.scene = new THREE.Scene();
+	this.camera = new Root.THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+	this.scene = new Root.THREE.Scene();
 
-	this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
+	this.quad = new Root.THREE.Mesh( new Root.THREE.PlaneBufferGeometry( 2, 2 ), null );
 	this.scene.add( this.quad );
 
 };
 
-THREE.ShaderPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
+THREE.ShaderPass.prototype = Object.assign( Object.create( Root.THREE.Pass.prototype ), {
 
-	constructor: THREE.ShaderPass,
+	constructor: Root.THREE.ShaderPass,
 
 	render: function( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
@@ -64,3 +68,5 @@ THREE.ShaderPass.prototype = Object.assign( Object.create( THREE.Pass.prototype 
 	}
 
 } );
+
+})(this);

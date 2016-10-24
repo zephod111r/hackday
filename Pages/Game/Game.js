@@ -65,17 +65,17 @@
                 
                 this.renderModel = new THREE.RenderPass( Rendering.Scene.Scene, this.camera );
                 this.renderModel.clearColor = new THREE.Color(0.0, 0.0, 0.0);
-                this.renderModel.renderToScreen = true;
+                //this.renderModel.renderToScreen = true;
                 this.composer.addPass( this.renderModel );
                 
                 
-                //this.effectBloom = new THREE.BloomPass( 1.25 );
-                //this.this.effectBloom.renderToScreen = true;
-                //this.composer.addPass( this.effectBloom );
+                this.effectBloom = new THREE.BloomPass( 1.25 );
+                //this.effectBloom.renderToScreen = true;
+                this.composer.addPass( this.effectBloom );
                 
-                //this.effectFilm = new THREE.FilmPass( 0.20, 0.95, 2048, false );
-                //this.effectFilm.renderToScreen = true;
-                //this.composer.addPass( this.effectFilm );
+                this.effectFilm = new THREE.FilmPass( 0.20, 0.95, 2048, false );
+                this.effectFilm.renderToScreen = true;
+                this.composer.addPass( this.effectFilm );
                 
                 
                 window.addEventListener( 'resize', this.onWindowResize.bind(this), false );

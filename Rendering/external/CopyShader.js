@@ -1,19 +1,18 @@
-(function(Root) {
- 
- Root.THREE = Root.THREE || {};
-
 /**
  * @author alteredq / http://alteredqualia.com/
  *
  * Full-screen textured quad shader
  */
+(function(Root) {
+ 
+Root.THREE = Root.THREE || {};
 
 Root.THREE.CopyShader = {
 
 	uniforms: {
 
-		"tDiffuse": { type: "t", value: null },
-		"opacity":  { type: "f", value: 1.0 }
+		"tDiffuse": { value: null },
+		"opacity":  { value: 1.0 }
 
 	},
 
@@ -48,4 +47,5 @@ Root.THREE.CopyShader = {
 	].join( "\n" )
 
 };
-  })(this);
+
+})(this);

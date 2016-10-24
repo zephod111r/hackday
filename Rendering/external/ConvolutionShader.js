@@ -1,6 +1,3 @@
-(function(Root) {
- 
- Root.THREE = Root.THREE || {};
 /**
  * @author alteredq / http://alteredqualia.com/
  *
@@ -8,6 +5,9 @@
  * ported from o3d sample to WebGL / GLSL
  * http://o3d.googlecode.com/svn/trunk/samples/convolution.html
  */
+(function(Root) {
+ 
+Root.THREE = Root.THREE || {};
 
 Root.THREE.ConvolutionShader = {
 
@@ -20,9 +20,9 @@ Root.THREE.ConvolutionShader = {
 
 	uniforms: {
 
-		"tDiffuse":        { type: "t", value: null },
-		"uImageIncrement": { type: "v2", value: new Root.THREE.Vector2( 0.001953125, 0.0 ) },
-		"cKernel":         { type: "fv1", value: [] }
+		"tDiffuse":        { value: null },
+		"uImageIncrement": { value: new THREE.Vector2( 0.001953125, 0.0 ) },
+		"cKernel":         { value: [] }
 
 	},
 
@@ -102,4 +102,4 @@ Root.THREE.ConvolutionShader = {
 	}
 
 };
-  })(this);
+})(this);

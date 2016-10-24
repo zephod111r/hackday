@@ -1,8 +1,9 @@
- (function(Root) {
 /**
  * @author alteredq / http://alteredqualia.com/
  * @author mr.doob / http://mrdoob.com/
  */
+
+(function(Root) {
 
 var Detector = {
 

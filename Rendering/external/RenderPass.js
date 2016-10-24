@@ -2,7 +2,11 @@
  * @author alteredq / http://alteredqualia.com/
  */
 
-THREE.RenderPass = function ( scene, camera, overrideMaterial, clearColor, clearAlpha ) {
+(function(Root) {
+ 
+Root.THREE = Root.THREE || {};
+
+Root.THREE.RenderPass = function ( scene, camera, overrideMaterial, clearColor, clearAlpha ) {
 
 	THREE.Pass.call( this );
 
@@ -19,9 +23,9 @@ THREE.RenderPass = function ( scene, camera, overrideMaterial, clearColor, clear
 
 };
 
-THREE.RenderPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
+Root.THREE.RenderPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
 
-	constructor: THREE.RenderPass,
+	constructor: Root.THREE.RenderPass,
 
 	render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
@@ -54,3 +58,5 @@ THREE.RenderPass.prototype = Object.assign( Object.create( THREE.Pass.prototype 
 	}
 
 } );
+
+})(this);
