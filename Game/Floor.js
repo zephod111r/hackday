@@ -1,5 +1,5 @@
 (function initFloor(local){
-
+"use strict";
 local.Floor = Class.Design(function floorConstructor(arenaSize){
 // Constructor
     var texture = new THREE.CanvasTexture( this.GenerateFloor() );

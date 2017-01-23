@@ -3,7 +3,7 @@
  */
 
 (function(Root) {
- 
+ "use strict";
 Root.THREE = Root.THREE || {};
 
 Root.THREE.EffectComposer = function ( renderer, renderTarget ) {

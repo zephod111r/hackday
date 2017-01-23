@@ -1,5 +1,5 @@
 (function initResourceEnergy(local) {
-
+"use strict";
     var Energy = Class.Derive(local.Game.Resource, function () {
     }, {
         Description: {

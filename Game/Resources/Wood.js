@@ -1,5 +1,5 @@
 (function initResourceWood(local) {
-
+"use strict";
     var Wood = Class.Derive(local.Game.Resource, function () {
     }, {
         Description: {

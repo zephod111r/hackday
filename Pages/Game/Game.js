@@ -9,7 +9,8 @@
                 
                 var size = 0.65;
                 var torusgeom = new THREE.TorusGeometry( size, 0.3, 30, 30 ); // CircleGeometry(size, 64);
-                var torusmesh = new THREE.Mesh(torusgeom, Shaders.Lava.material);
+                //var torusmesh = new THREE.Mesh(torusgeom, Shaders.Lava.material);
+                var torusmesh = new THREE.Mesh(torusgeom, Shaders.SimpleTexture.material);
                 //var torusmesh = new THREE.Mesh(torusgeom, new THREE.MeshBasicMaterial({ color: new THREE.Color( 0xFF4400 )}));
          
                 var light = new THREE.HemisphereLight(0x66ccff, 0x00aa00, 1);
@@ -50,33 +51,30 @@
                 
                 element.appendChild(this.renderer.domElement);
                 
+                //common render target params
+				var renderTargetParameters = { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBFormat, stencilBufer: false };
+                this.renderShaderTarget = new THREE.WebGLRenderTarget( 360, 360, renderTargetParameters );
+				
+                
                 // camera
                 this.camera = new THREE.PerspectiveCamera(60, 4/3, 1, 1000);
                 this.camera.position.set(0, 2, 250);
                 this.camera.lookAt(new THREE.Vector3(0, 1.5, 0));
                 
-                this.composer = new THREE.EffectComposer( this.renderer );
-                
-                this.effectShaderLava1 = new THREE.ShaderPass(Shaders.Lava.material, 1);
-                this.effectShaderLava2 = new THREE.ShaderPass(Shaders.Lava.material, 2);
-                
-                this.composer.addPass( this.effectShaderLava1 );
-                this.composer.addPass( this.effectShaderLava2 );
                 
                 this.renderModel = new THREE.RenderPass( Rendering.Scene.Scene, this.camera );
                 this.renderModel.clearColor = new THREE.Color(0.0, 0.0, 0.0);
-                //this.renderModel.renderToScreen = true;
+                
+                this.composer = new THREE.EffectComposer( this.renderer );
                 this.composer.addPass( this.renderModel );
                 
-                
                 this.effectBloom = new THREE.BloomPass( 1.25 );
-                //this.effectBloom.renderToScreen = true;
                 this.composer.addPass( this.effectBloom );
                 
                 this.effectFilm = new THREE.FilmPass( 0.20, 0.95, 2048, false );
-                this.effectFilm.renderToScreen = true;
                 this.composer.addPass( this.effectFilm );
                 
+                this.effectFilm.renderToScreen = true;
                 
                 window.addEventListener( 'resize', this.onWindowResize.bind(this), false );
                 
@@ -115,6 +113,7 @@
         Render: {
             value: function(delta) {
                 this.renderer.clear();
+                //this.shaderComposer.render( delta );
                 this.composer.render( delta );
             }
         },

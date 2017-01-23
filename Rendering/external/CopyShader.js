@@ -4,7 +4,7 @@
  * Full-screen textured quad shader
  */
 (function(Root) {
- 
+ "use strict";
 Root.THREE = Root.THREE || {};
 
 Root.THREE.CopyShader = {

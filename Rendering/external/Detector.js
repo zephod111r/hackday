@@ -4,7 +4,7 @@
  */
 
 (function(Root) {
-
+"use strict";
 var Detector = {
 
 	canvas: !! window.CanvasRenderingContext2D,

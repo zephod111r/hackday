@@ -1,5 +1,6 @@
 (function(Root){
  
+    "use strict";
     Root.ShaderThreeFragment = [
         "uniform float time;",
         "uniform vec2 resolution;",

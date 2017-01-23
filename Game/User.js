@@ -1,5 +1,5 @@
 (function initUser(local) {
-
+"use strict";
     var User = Class.Design(function () {
         Object.defineProperties(this, {
 

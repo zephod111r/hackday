@@ -1,5 +1,5 @@
 (function initResourceStone(local) {
-
+"use strict";
     var Stone = Class.Derive(local.Game.Resource, function () {
     }, {
         Description: {

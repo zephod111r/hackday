@@ -1,5 +1,5 @@
 (function initResource(local) {
-
+"use strict";
     var Resource = Class.Derive(local.Game.GameObject, function () {
     }, {
         Description: {

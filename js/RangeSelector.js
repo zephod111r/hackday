@@ -1,5 +1,5 @@
 (function initRangeSelector(local) {
-
+"use strict";
     var NumberInput = Class.Derive(DisplayElement.Div, function (title, defaultValue, minvalue, maxvalue, increment) {
         Object.defineProperties(this, {
             value: {

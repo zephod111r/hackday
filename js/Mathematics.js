@@ -1,5 +1,5 @@
 (function initMathematics(local) {
- 
+ "use strict";
 local.Mathematics = Class.Design(function(){}, {}, {
  
     convertDegreesToRadians: {

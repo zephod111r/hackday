@@ -1,5 +1,5 @@
 (function initSky(local){
-
+"use strict";
 local.Sky = Class.Design(function skyConstructor(arenaSize){
 // Constructor
     var texture = new THREE.CanvasTexture( this.GenerateSky() );

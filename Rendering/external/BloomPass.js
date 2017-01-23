@@ -3,7 +3,7 @@
  */
 
 (function(Root) {
- 
+ "use strict";
 Root.THREE = Root.THREE || {};
 
 Root.THREE.BloomPass = function ( strength, kernelSize, sigma, resolution ) {

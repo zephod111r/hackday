@@ -1,5 +1,6 @@
 (function initAsset(local) {
 
+    "use strict";
     var Asset = Class.Derive(local.Game.GameObject, function (position) {
         Object.defineProperties(this, {
             position: {

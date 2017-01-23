@@ -1,5 +1,5 @@
 (function initResourceFood(local) {
-
+"use strict";
     var Food = Class.Derive(local.Game.Resource, function () {
     }, {
         Description: {

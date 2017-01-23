@@ -1,5 +1,5 @@
 (function initTechnology(local) {
-
+"use strict";
     var Technology = Class.Derive(local.Game.GameObject, function () {
         Object.defineProperties(this, {
         });

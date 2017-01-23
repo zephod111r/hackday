@@ -1,5 +1,6 @@
 (function initBuilding(local) {
 
+    "use strict";
     var Building = Class.Derive(local.Game.Asset, function (position) {
         Object.defineProperties(this, {
         });

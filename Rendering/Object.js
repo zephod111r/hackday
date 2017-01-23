@@ -1,5 +1,5 @@
 (function initRenderObject(local) {
- 
+ "use strict";
 var renderObject = Class.Design(function(object, makeVisible){
     Object.defineProperties(this,
     {

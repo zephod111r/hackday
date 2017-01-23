@@ -1,5 +1,6 @@
 (function(local){
     
+    "use strict";
 var fragmentShader = [
                         "uniform float time;",
                         "uniform vec2 resolution;",
@@ -60,22 +61,20 @@ var vertexShader = [
 var textureCloud = Rendering.TextureLoader.load( "./images/cloud.png" );
 textureCloud.wrapS = THREE.RepeatWrapping;
 textureCloud.wrapT = THREE.RepeatWrapping;
-textureCloud.needsUpdate = true;
 
 var textureLava = Rendering.TextureLoader.load( "./images/lavatile.jpg" );
 textureLava.wrapS = THREE.RepeatWrapping;
 textureLava.wrapT = THREE.RepeatWrapping;
 textureLava.repeat.set( 4, 4 );
-textureLava.needsUpdate = true;
 
 var uniforms = {
-                    uvScale: { value: new THREE.Vector2( 3.0, 1.0 ), type: 'v2' },
-                    fogDensity: { value: 0.45, type: 'f' },
-                    fogColor: { value: new THREE.Vector3( 0, 0, 0 ), type: 'v3' },
-                    time: { value: 1.0, type: 'f' },
-                    resolution: { value: new THREE.Vector2(), type: 'v2' },
-                    texture1: { value: textureCloud, type: 't' },
-                    texture2: { value: textureLava, type: 't' }
+                    fogDensity: { value: 0.45 },
+                    fogColor:   { value: new THREE.Vector3( 0, 0, 0 ) },
+                    time:       { value: 1.0 },
+                    resolution: { value: new THREE.Vector2() },
+                    uvScale:    { value: new THREE.Vector2( 3.0, 1.0 ) },
+                    texture1:   { value: textureCloud },
+                    texture2:   { value: textureLava }
                 };
 
 local.Lava = local.Lava || {};

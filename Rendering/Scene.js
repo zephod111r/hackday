@@ -1,5 +1,5 @@
 (function initRenderObject(local) {
-  
+  "use strict";
 var Scene = Class.Design(function(scene){
     Object.defineProperties(this, {
         objects: {

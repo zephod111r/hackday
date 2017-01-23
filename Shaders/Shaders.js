@@ -1,5 +1,7 @@
 (function initShaders(local) {
 
+"use strict";
+
 var shaderList = [];
 
 ;
@@ -15,7 +17,12 @@ Object.defineProperties(local, {
             {
                 for(var index in shaderList) {
                     var item = shaderList[index];
-                    if(!!item) {
+                    if(
+                            !!item
+                        &&  !!item.material
+                        &&  !!item.material.uniforms
+                        &&  !!item.material.uniforms.time
+                    ) {
                         item.material.uniforms.time.value += ( delta );
                     }
                 }

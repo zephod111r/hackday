@@ -1,5 +1,6 @@
 (function initUnit(local) {
 
+    "use strict";
     var Unit = Class.Derive(local.Game.Asset, function (position) {
         Object.defineProperties(this, {
         });

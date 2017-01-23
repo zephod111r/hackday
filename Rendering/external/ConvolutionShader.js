@@ -6,7 +6,7 @@
  * http://o3d.googlecode.com/svn/trunk/samples/convolution.html
  */
 (function(Root) {
- 
+ "use strict";
 Root.THREE = Root.THREE || {};
 
 Root.THREE.ConvolutionShader = {

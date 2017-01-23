@@ -1,5 +1,5 @@
 (function initGameObject(local) {
-
+"use strict";
     var GameObject = Class.Design(function () {
     }, {
         Type: {

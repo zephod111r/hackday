@@ -1,5 +1,5 @@
 (function initController(local) {
-
+"use strict";
     var Controller = Class.Design(function (controls) {
         Object.defineProperties(this, {
             vec: {

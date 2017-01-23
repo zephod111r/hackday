@@ -1,5 +1,5 @@
 (function initResourcePreciousMetals(local) {
-
+"use strict";
     var PreciousMetals = Class.Derive(local.Game.Resource, function () {
     }, {
         Description: {

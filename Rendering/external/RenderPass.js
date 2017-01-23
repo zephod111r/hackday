@@ -3,7 +3,7 @@
  */
 
 (function(Root) {
- 
+ "use strict";
 Root.THREE = Root.THREE || {};
 
 Root.THREE.RenderPass = function ( scene, camera, overrideMaterial, clearColor, clearAlpha ) {

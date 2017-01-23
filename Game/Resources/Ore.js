@@ -1,5 +1,5 @@
 (function initResourceOre(local) {
-
+"use strict";
     var Ore = Class.Derive(local.Game.Resource, function () {
     }, {
         Description: {
