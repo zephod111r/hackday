@@ -14,7 +14,7 @@
                 menuTitle.AddClass("Title");
 
                 var buttons = [];
-                
+
                 var button = new Buttons.Text("game_New_Game");
                 button.OnClick = function (event) {
                     Page.Navigate('./Pages/NewGame/NewGame.html');
