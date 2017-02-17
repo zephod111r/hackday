@@ -168,6 +168,7 @@
         { which: "c", kc: 67, button: 2 },
         { which: "v", kc: 86, button: 3 },
 
+        { which: "h", kc: 72, open: "./Pages/About/About.html" },
         { which: "esc", kc: 27, open: "./Pages/MainMenu/MainMenu.html" },
         { which: "tab", kc: 9, open: "./Pages/GameInventory/GameInventory.html" },
         { which: "end", kc: 35, open: "./Pages/EndGame/EndGame.html" }

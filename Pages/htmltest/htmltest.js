@@ -2,14 +2,14 @@
 
     "use strict";
 
-    Page.Create('/Pages/htmltest/htmltest.html', {
+    Page.Create('./Pages/htmltest/htmltest.html', {
         Ready: {
             value: function (element, options) {
 
                 var button = new Buttons.Text("id_Back");
                 button.Parent = element;
                 button.OnClick = function () {
-                    Page.Navigate('/Pages/MainMenu/MainMenu.html');
+                    Page.Navigate('./Pages/MainMenu/MainMenu.html');
                 }.bind(this);
                 button.AddClass('BackButton');
 
@@ -31,7 +31,7 @@
                         }.bind(entry));
                     }
                     this.Promise.Then(function () {
-                        Page.Navigate('/Pages/htmltest/htmltest.html');
+                        Page.Navigate('./Pages/htmltest/htmltest.html');
                     })
                 }.bind(this));
 

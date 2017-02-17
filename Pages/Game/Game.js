@@ -9,8 +9,8 @@
                 
                 var size = 0.65;
                 var torusgeom = new THREE.TorusGeometry( size, 0.3, 30, 30 ); // CircleGeometry(size, 64);
-                var torusmesh = new THREE.Mesh(torusgeom, Shaders.Lava.material);
-                //var torusmesh = new THREE.Mesh(torusgeom, Shaders.SimpleTexture.material);
+                //var torusmesh = new THREE.Mesh(torusgeom, Shaders.Lava.material);
+                var torusmesh = new THREE.Mesh(torusgeom, Shaders.SimpleTexture.material);
                 //var torusmesh = new THREE.Mesh(torusgeom, new THREE.MeshBasicMaterial({ color: new THREE.Color( 0xFF4400 )}));
          
                 var light = new THREE.HemisphereLight(0x66ccff, 0x00aa00, 1);
@@ -60,7 +60,6 @@
                 this.camera = new THREE.PerspectiveCamera(60, 4/3, 1, 1000);
                 this.camera.position.set(0, 2, 250);
                 this.camera.lookAt(new THREE.Vector3(0, 1.5, 0));
-                
                 
                 this.renderModel = new THREE.RenderPass( Rendering.Scene.Scene, this.camera );
                 this.renderModel.clearColor = new THREE.Color(0.0, 0.0, 0.0);
@@ -113,7 +112,6 @@
         Render: {
             value: function(delta) {
                 this.renderer.clear();
-                //this.shaderComposer.render( delta );
                 this.composer.render( delta );
             }
         },

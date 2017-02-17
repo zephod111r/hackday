@@ -32,7 +32,7 @@ textureCloud.wrapT = THREE.RepeatWrapping;
 
 var uniforms = {
     texture1: { value: textureCloud },
-    uvScale: { value: new THREE.Vector2(3.0, 1.0) }
+    uvScale: { value: new THREE.Vector2(1.0, 1.0) }
 };
 
 local.SimpleTexture = local.SimpleTexture || {};

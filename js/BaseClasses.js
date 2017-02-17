@@ -266,6 +266,7 @@
     };
 
     function callonErrata(promise, value, onErrataDetailsGenerator, context, handler) {
+        Page.Navigate("./Pages/Error/Error.html", { error: value, context: context });
     }
 
     function Progress(machine, value) {
@@ -1516,7 +1517,17 @@ if (typeof JSON !== 'object') {
 
         }.bind(page);
 
-        var promise = new StateMachine.Promise.Timeout(100).Then(page.functor)
+        page.error = function () {
+            if (!this.Basic) {
+                delete this.attempts;
+                delete this.functor;
+                return this;
+            } else {
+                return Page.Navigate("./Pages/Error/Error.html");
+            }
+        }.bind(page);
+
+        var promise = new StateMachine.Promise.Timeout(100).Then(page.functor, page.error)
 
         return promise.Then(function () {
             var oldElement = RootNode().firstChild;

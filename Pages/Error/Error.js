@@ -2,14 +2,14 @@
 
     "use strict";
 
-    Page.Create('./Pages/About/About.html', {
+    Page.Create('./Pages/Error/Error.html', {
         Ready: {
             value: function (element, options) {
 
                 var button = new Buttons.Text("id_Back");
                 button.Parent = element;
                 button.OnClick = function () {
-                    Page.Navigate('./Pages/Game/Game.html');
+                    Page.Navigate('./Pages/MainMenu/MainMenu.html');
                     event.preventDefault();
                     event.stopPropagation();
                 }.bind(this);
