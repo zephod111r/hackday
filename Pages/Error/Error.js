@@ -14,6 +14,8 @@
                     event.stopPropagation();
                 }.bind(this);
                 button.AddClass('BackButton');
+
+
             },
             writable: false,
             enumerable: true

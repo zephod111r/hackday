@@ -26,7 +26,7 @@ var vertexShader = [
                           "}"
     ].join('\n');
     
-var textureCloud = Rendering.TextureLoader.load( "./images/cloud.png" );
+var textureCloud = Rendering.TextureLoader.load("./images/lavatile.png");
 textureCloud.wrapS = THREE.RepeatWrapping;
 textureCloud.wrapT = THREE.RepeatWrapping;
 

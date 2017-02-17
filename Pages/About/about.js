@@ -20,7 +20,6 @@
         },
         Unload: {
             value: function () {
-                this.Promise && this.Promise.Cancel && this.Promise.Cancel();
             },
             writable: false,
             enumerable: true

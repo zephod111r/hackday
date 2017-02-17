@@ -9,8 +9,8 @@
                 
                 var size = 0.65;
                 var torusgeom = new THREE.TorusGeometry( size, 0.3, 30, 30 ); // CircleGeometry(size, 64);
-                //var torusmesh = new THREE.Mesh(torusgeom, Shaders.Lava.material);
-                var torusmesh = new THREE.Mesh(torusgeom, Shaders.SimpleTexture.material);
+                var torusmesh = new THREE.Mesh(torusgeom, Shaders.Lava.material);
+                //var torusmesh = new THREE.Mesh(torusgeom, Shaders.SimpleTexture.material);
                 //var torusmesh = new THREE.Mesh(torusgeom, new THREE.MeshBasicMaterial({ color: new THREE.Color( 0xFF4400 )}));
          
                 var light = new THREE.HemisphereLight(0x66ccff, 0x00aa00, 1);

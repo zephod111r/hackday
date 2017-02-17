@@ -2,12 +2,13 @@
     
     "use strict";
 var fragmentShader = [
+                        "uniform float fogDensity;",
+                        "uniform vec3 fogColor;",
+                        "",
                         "uniform float time;",
                         "uniform vec2 resolution;",
                         "",
-                        "uniform float fogDensity;",
-                        "uniform vec3 fogColor;",
-                      
+                        "uniform vec2 uvScale;", 
                         "uniform sampler2D texture1;",
                         "uniform sampler2D texture2;",
                         "",
@@ -15,11 +16,9 @@ var fragmentShader = [
                         "",
                         "void main( void ) {",
                         "",
-                        "   vec2 position = -1.0 + 2.0 * vUv;",
-                        "",
                         "   vec4 noise = texture2D( texture1, vUv );",
-                        "   vec2 T1 = vUv + vec2( 1.5, -1.5 ) * time * 0.04;",
-                        "   vec2 T2 = vUv + vec2( -0.5, 2.0 ) * time * 0.02;",
+                        "   vec2 T1 = vUv + vec2( 1.5, -1.5 ) * time * 0.02;",
+                        "   vec2 T2 = vUv + vec2( -0.5, 2.0 ) * time * 0.01;",
                         "",
                         "   T1.x += noise.x * 2.0;",
                         "   T1.y += noise.y * 2.0;",
@@ -65,12 +64,11 @@ textureCloud.wrapT = THREE.RepeatWrapping;
 var textureLava = Rendering.TextureLoader.load( "./images/lavatile.jpg" );
 textureLava.wrapS = THREE.RepeatWrapping;
 textureLava.wrapT = THREE.RepeatWrapping;
-textureLava.repeat.set( 4, 4 );
 
 var uniforms = {
                     fogDensity: { value: 0.45 },
                     fogColor:   { value: new THREE.Vector3( 0, 0, 0 ) },
-                    time:       { value: 1.0 },
+                    time:       { value: 0.0 },
                     resolution: { value: new THREE.Vector2() },
                     uvScale:    { value: new THREE.Vector2( 3.0, 1.0 ) },
                     texture1:   { value: textureCloud },
