@@ -1556,9 +1556,21 @@ if (typeof JSON !== 'object') {
                     var cd = cacheObj.loadedDocument;
                     var b = cd.body;
 
+                    var scriptLoaderPromise = StateMachine.Promise.Wrap(); 
+
                     forEach(cd.querySelectorAll('link[rel="stylesheet"], link[type="text/css"]'), addLink);
-                    forEach(cd.getElementsByTagName('style'), function (e, i) { addStyle(e, href, i); });
-                    forEach(cd.getElementsByTagName('script'), function (e, i) { addScript(e, href, i); });
+                    forEach(cd.getElementsByTagName('style'), function (e, i) {
+                        var loadfunction = function () {
+                            addStyle(this.e, this.href, this.i);
+                        }.bind({ that: this, e: e, href: href, i: i });
+                        scriptLoaderPromise = scriptLoaderPromise.Then(loadfunction);
+                    });
+                    forEach(cd.getElementsByTagName('script'), function (e, i) {
+                        var loadfunction = function () {
+                            addScript(this.e, this.href, this.i);
+                        }.bind({ that: this, e: e, href: href, i: i });
+                        scriptLoaderPromise = scriptLoaderPromise.Then(loadfunction);
+                    });
 
                     forEach(b.getElementsByTagName('img'), function (e) { e.src = e.src; });
                     forEach(b.getElementsByTagName('a'), function (e) {

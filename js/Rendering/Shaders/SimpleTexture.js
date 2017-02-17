@@ -8,12 +8,14 @@ var fragmentShader = [
                         "varying vec2 vUv;",
                         "",
                         "void main( void ) {",
-                        //"gl_FragColor = texture2D(texture1, vUv);",
-                        "gl_FragColor = vec4(0.5, 0.2, 1.0, 1.0);",
+                        "gl_FragColor = texture2D(texture1, vUv);",
+                        //"gl_FragColor = vec4(0.5, 0.2, 1.0, 1.0);",
                         "}"
     ].join('\n');
     
 var vertexShader = [
+                          "uniform vec2 uvScale;",
+                          "",
                           "varying vec2 vUv;",
                           "",
                           "void main()",
@@ -29,7 +31,8 @@ textureCloud.wrapS = THREE.RepeatWrapping;
 textureCloud.wrapT = THREE.RepeatWrapping;
 
 var uniforms = {
-    texture1: { value: textureCloud }
+    texture1: { value: textureCloud },
+    uvScale: { value: new THREE.Vector2(3.0, 1.0) }
 };
 
 local.SimpleTexture = local.SimpleTexture || {};
