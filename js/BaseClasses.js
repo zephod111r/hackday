@@ -6,6 +6,7 @@
         "Class",
         "Navigation",
         "StateMachine",
+        "Workers",
         "HTTP",
         "Page",
         "Input",
@@ -532,7 +533,8 @@
                 this.nextState = state;
             },
             writable: false,
-            enumerable: true
+            enumerable: true,
+            configurable: false
         },
         Run: {
             value: function () {
@@ -543,7 +545,8 @@
                 }
             },
             writable: false,
-            enumerable: false
+            enumerable: false,
+            configurable: false
         },
         Cancel: {
             value: function () {
@@ -551,21 +554,24 @@
                 this.Run();
             },
             writable: false,
-            enumerable: true
+            enumerable: true,
+            configurable: false
         },
         Done: {
             value: function (onComplete, onErrata, onProgress) {
                 return this.state.Done(this, onComplete, onErrata, onProgress);
             },
             writable: true,
-            enumerable: true
+            enumerable: true,
+            configurable: false
         },
         Then: {
             value: function (onComplete, onErrata, onProgress) {
                 return this.state.Then(this, onComplete, onErrata, onProgress);
             },
             writable: true,
-            enumerable: true
+            enumerable: true,
+            configurable: false
         },
         Completed: {
             value: function (value) {
@@ -574,7 +580,8 @@
                 return result;
             },
             writable: false,
-            enumerable: false
+            enumerable: false,
+            configurable: false
         },
         Errata: {
             value: function (value) {
@@ -583,14 +590,16 @@
                 return result;
             },
             writable: false,
-            enumerable: false
+            enumerable: false,
+            configurable: false
         },
         Progress: {
             value: function (value) {
                 this.state.Progress(this, value);
             },
             writable: false,
-            enumerable: false
+            enumerable: false,
+            configurable: false
         },
         CancelAction: {
             value: function () {
@@ -599,7 +608,8 @@
                 }
             },
             writable: true,
-            enumerable: false
+            enumerable: false,
+            configurable: false
         },
         setCompleteValue: {
             value: function (value) {
@@ -607,7 +617,8 @@
                 this.Run();
             },
             writable: false,
-            enumerable: true
+            enumerable: true,
+            configurable: false
         },
         ChainedErrata: {
             value: function (value, context) {
@@ -616,7 +627,8 @@
                 return result;
             },
             writable: false,
-            enumerable: false
+            enumerable: false,
+            configurable: false
         },
         setChainedErrataValue: {
             value: function (value, context) {
@@ -625,7 +637,8 @@
                 return result;
             },
             writable: false,
-            enumerable: false
+            enumerable: false,
+            configurable: false
         },
         setExceptionValue: {
             value: function (value) {
@@ -634,7 +647,8 @@
                 return result;
             },
             writable: false,
-            enumerable: false
+            enumerable: false,
+            configurable: false
         }
     });
 
@@ -643,7 +657,8 @@
             creator: {
                 value: creator,
                 writable: true,
-                enumerable: false
+                enumerable: false,
+                configurable: false
             }
         });
 
@@ -652,12 +667,18 @@
         CleanupAction: {
             value: function () {
                 this.creator = null;
-            }, writable: false, enumerable: false
+            },
+            writable: false,
+            enumerable: false,
+            configurable: false
         },
         CancelAction: {
             value: function () {
                 this.creator && this.creator.Cancel && this.creator.Cancel();
-            }, writable: false, enumerable: false
+            },
+            writable: false,
+            enumerable: false,
+            configurable: false
         }
     });
 
@@ -690,7 +711,10 @@
                 setImmediate(function () {
                     throw value;
                 });
-            }, writable: true, enumerable: false
+            },
+            writable: true,
+            enumerable: false,
+            configurable: false
         },
         Then: {
             value: function (unused, onErrata) {
@@ -710,7 +734,10 @@
                     }
                 }
                 return result;
-            }, writable: true, enumerable: false
+            },
+            writable: true,
+            enumerable: false,
+            configurable: false
         }
     });
 
@@ -735,7 +762,10 @@
                         throw ex;
                     });
                 }
-            }, writable: true, enumerable: false
+            },
+            writable: true,
+            enumerable: false,
+            configurable: false
         },
         Then: {
             value: function (onComplete) {
@@ -745,7 +775,10 @@
                 } catch (ex) {
                     return new ExceptionPromise(ex);
                 }
-            }, writable: true, enumerable: false
+            },
+            writable: true,
+            enumerable: false,
+            configurable: false
         }
     });
 
@@ -1125,12 +1158,14 @@ if (typeof JSON !== 'object') {
             url: {
                 value: entry.url,
                 writable: false,
-                enumerable: true
+                enumerable: true,
+                configurable: false
             },
             response: {
                 value: null,
                 writable: true,
-                enumerable: false
+                enumerable: false,
+                configurable: false
             }
         });
 
@@ -1143,24 +1178,29 @@ if (typeof JSON !== 'object') {
                 }
                 return type;
             },
-            enumerable: true
+            enumerable: true,
+            configurable: false
         },
         Filename: {
             get: function () {
                 return GetFilename(this.url);
             },
-            enumerable: true
+            enumerable: true,
+            configurable: false
         },
         Extension: {
             get: function () {
                 return GetFileext(this.url);
             },
-            enumerable: true
+            enumerable: true,
+            configurable: false
         },
         Directory: {
             get: function () {
                 return GetFiledir(this.url);
-            }, enumerable: true
+            },
+            enumerable: true,
+            configurable: false
         },
         Cancel: {
             value: function () {
@@ -1267,7 +1307,10 @@ if (typeof JSON !== 'object') {
                     }
                     return value;
                 }.bind(this));
-            }, writable: false, enumerable: true
+            },
+            writable: false,
+            enumerable: true,
+            configurable: false
         }
     });
 
@@ -1275,12 +1318,18 @@ if (typeof JSON !== 'object') {
         Load: {
             value: function (url) {
                 return new HTTPRequest({ url: url }).Get();
-            }, writable: false, enumerable: false
+            },
+            writable: false,
+            enumerable: false,
+            configurable: false
         },
         SaveJavascript: {
             value: function (url, content, user, password) {
                 return new StateMachine.Promise(SaveJavascript.bind({ url: url, content: content, user: user, password: password }));
-            }, writable: false, enumerable: false
+            },
+            writable: false,
+            enumerable: false,
+            configurable: false
         }
     });
 
@@ -1375,7 +1424,8 @@ if (typeof JSON !== 'object') {
             src: {
                 value: src,
                 writable: false,
-                enumerable: true
+                enumerable: true,
+                configurable: false
             },
             loadedDocument: {
                 value: document,
@@ -1391,7 +1441,8 @@ if (typeof JSON !== 'object') {
             url: {
                 value: url,
                 writable: false,
-                enumerable: true
+                enumerable: true,
+                configurable: false
             },
             loadedDocument: {
                 value: null,
@@ -1431,12 +1482,14 @@ if (typeof JSON !== 'object') {
             set: function (value) {
                 this.promise =  StateMachine.Promise.As(value);
             },
-            enumerable: true
+            enumerable: true,
+            configurable: false
         },
         Basic: {
             value: true,
             writable: true,
-            enumerable: true
+            enumerable: true,
+            configurable: false
         }
     });
 
@@ -1459,7 +1512,8 @@ if (typeof JSON !== 'object') {
                 return link.href;
             },
             enumerable : true,
-            writable: false
+            writable: false,
+            configurable: false
         },
         AddItem: {
             value: function (url, data) {
@@ -1472,14 +1526,16 @@ if (typeof JSON !== 'object') {
                 this.cache[url] = data;
             },
             writable: false,
-            enumerable: true
+            enumerable: true,
+            configurable: false
         },
         isPresent: {
             value: function (url) {
                 return this.cache.hasOwnProperty(url);
             },
             writable: false,
-            enumerable: false
+            enumerable: false,
+            configurable: false
         },
         GetItem: {
             value: function (url) {
@@ -1490,7 +1546,8 @@ if (typeof JSON !== 'object') {
                 return null;
             },
             writable: false,
-            enumerable: true
+            enumerable: true,
+            configurable: false
         }
     });
 
@@ -1617,8 +1674,10 @@ if (typeof JSON !== 'object') {
                     delete cacheObj.promise;
                     return cacheObj;
                 });
-            }, writable: false,
-            enumerable: true
+            },
+            writable: false,
+            enumerable: true,
+            configurable: false
         },
         EnableSpinner: {
             value: function () {
@@ -1628,6 +1687,7 @@ if (typeof JSON !== 'object') {
             },
             enumerable: true,
             writable: false,
+            configurable: false
         },
         DisableSpinner: {
             value: function () {
@@ -1636,7 +1696,8 @@ if (typeof JSON !== 'object') {
                 Utility.AddStyleClass(spinner, "Hidden");
             },
             enumerable: true,
-            writable: false
+            writable: false,
+            configurable: false
         },
         Navigate: {
             value: function (url, options) {
@@ -1670,7 +1731,8 @@ if (typeof JSON !== 'object') {
                 
             },
             writable: false,
-            enumerable: true
+            enumerable: true,
+            configurable: false
         },
         Create: {
             value: function (url, methods) {
@@ -1688,7 +1750,8 @@ if (typeof JSON !== 'object') {
                 return data;
             },
             writable: false,
-            enumerable: true
+            enumerable: true,
+            configurable: false
         }
     });
 })(this.Page);
@@ -1699,7 +1762,8 @@ if (typeof JSON !== 'object') {
         language: {
             value: null,
             enumerable: false,
-            writable: true
+            writable: true,
+            configurable: false
         },
         Translate: {
             value: function (id) {
@@ -1719,7 +1783,8 @@ if (typeof JSON !== 'object') {
                 return string;
             },
             writable: false,
-            enumerable: false
+            enumerable: false,
+            configurable: false
         },
         Dictionary: {
             value: {},
@@ -1775,17 +1840,20 @@ if (typeof JSON !== 'object') {
             onInitialise: {
                 value: null,
                 writable: true,
-                enumerable: true
+                enumerable: true,
+                configurable: false
             },
             onRun: {
                 value: null,
                 writable: true,
-                enumerable: true
+                enumerable: true,
+                configurable: false
             },
             onShutdown: {
                 value: null,
                 writable: true,
-                enumerable: true
+                enumerable: true,
+                configurable: false
             }
         });
     }, {
@@ -1796,6 +1864,7 @@ if (typeof JSON !== 'object') {
             },
             enumerable: true,
             writable: false,
+            configurable: false
         },
         DisableSpinner: {
             value: function () {
@@ -1803,13 +1872,17 @@ if (typeof JSON !== 'object') {
                 spinner && (spinner.style.display = "none");
             },
             enumerable: true,
-            writable: false
+            writable: false,
+            configurable: false
         }
     }, {
         Initialise: {
             value: function () {
                 return this.onInitialise ? this.onInitialise() : false;
-            }, writable: false, enumerable: false
+            },
+            writable: false,
+            enumerable: false,
+            configurable: false
         },
         Run: {
             value: function () {
@@ -1817,13 +1890,19 @@ if (typeof JSON !== 'object') {
                     return this.onRun();
                 else
                     throw Error("No run function applied!");
-            }, writable: false, enumerable: false
+            },
+            writable: false,
+            enumerable: false,
+            configurable: false
         },
         Shutdown: {
             value: function (reason) {
                 this.onShutdown ? this.onShutdown() : false;
                 document.close();
-            }, writable: false, enumerable: false
+            },
+            writable: false,
+            enumerable: false,
+            configurable: false
         }
     });
 
@@ -2483,8 +2562,202 @@ if (typeof JSON !== 'object') {
                 return keyCode;
             },
             writable: false,
-            enumerable: true
+            enumerable: true,
+            configurable: false
         }
     });
 
 })(this.Input);
+
+(function initWorkers(local) {
+
+    "use strict";
+    Object.defineProperties(local, {
+        workerList: {
+            value: [],
+            writable: false,
+            enumerable: false,
+            configurable: false
+        },
+        RegisterWorker: {
+            value: function (url, scope, callback) {
+                var object = this.IsRegistered(url);
+                if (object != null) {
+                    if (object.State() == WorkerState.Ready) {
+                        callback(object);
+                    } else {
+
+                        object.Register();
+                    }
+                    return;
+                }
+                workerList[url] = new local.Worker(url, scope, callback);
+                workerList[url].Register();
+            },
+            writable: false,
+            enumerable: false,
+            configurable: false
+        },
+        AddWorker: {
+            value: function (url, scope, callback) {
+                this.RegisterWorker(url, scope, callback);
+            },
+            writable: false,
+            enumerable: true,
+            configurable: false
+        },
+        IsRegistered: {
+            value: function (url) {
+                for (index in this.workerList) {
+                    if (this.workerList[index].Url == url) {
+                        return true;
+                    }
+                }
+                return null;
+            },
+            writable: false,
+            enumerable: false,
+            configurable: false
+        },
+        Shutdown: {
+            value: function () {
+                for (index in this.workerList) {
+                    var worker = this.workerList[index];
+                    worker.Unregister();
+                }
+            },
+            writable: false,
+            enumerable: true,
+            configurable: false
+
+        },
+        WorkerState: {
+            value: Object.freeze({
+                Initialising: 1,
+                Registering: 2,
+                Ready: 4,
+                Unregistering: 8,
+                Unregistered: 16
+            }),
+            writable: false,
+            enumerable: true,
+            configurable: false
+        },
+        Worker: {
+            value: Class.Design(function (url, scope, callback) {
+                Object.defineProperties(this, {
+                    state: {
+                        value: WorkerState.Initialising,
+                        writable: false,
+                        enumerable: false,
+                        configurable: false
+                    },
+                    url: {
+                        value: url,
+                        writable: false,
+                        enumerable: true,
+                        configurable: false
+                    },
+                    callback: {
+                        value: callback,
+                        writable: true,
+                        enumerable: true,
+                        configurable: false
+                    },
+                    workerPromise: {
+                        value: null,
+                        writable: true,
+                        enumerable: false,
+                        configurable: false
+                    },
+                    workerContext: {
+                        value: null,
+                        writable: true,
+                        enumerable: false,
+                        configurable: false
+                    },
+                    scope: {
+                        value: scope,
+                        writable: true,
+                        enumerable: false,
+                        configurable: false
+                    }
+                });
+            }, {
+                Unregister: {
+                    value: function () {
+                        State(WorkerState.Unregistering);
+                        if (this.workerContext != null) {
+                            this.workerPromise = this.workerContext.unregister().then(function (success) {
+                                this.workerContext = null;
+                                State(WorkerState.Unregistered);
+                            }.bind(this));
+                        }
+                    },
+                    enumerable: false,
+                    writable: false,
+                    configurable: false
+                },
+                Register: {
+                    value: function () {
+                        State(WorkerState.Registering);
+                        this.workerPromise = navigator.serviceWorker.register(this.url, this.scope).then(function (ServiceWorkerRegistration) {
+                            this.workerContext = ServiceWorkerRegistration;
+                            State(WorkerState.Ready);
+                        }.bind(this))
+                    },
+                    enumerable: false,
+                    writable: false,
+                    configurable: false
+                },
+                State: {
+                    get: function () {
+                        return this.state;
+                    },
+                    set: function (value) {
+                        switch (this.state) {
+                            case WorkerState.Initialising:
+                                if (value == WorkerState.Registering || value == WorkerState.Unregistering) {
+                                    this.state = value;
+                                    return;
+                                }
+                                break;
+                            case WorkerState.Registering:
+                                if (value == WorkerState.Ready || value == WorkerState.Unregistering) {
+                                    this.state = value;
+                                    return;
+                                }
+                                break;
+                            case WorkerState.Ready:
+                                if (value == WorkerState.Unregistering) {
+                                    this.state = value;
+                                    return;
+                                }
+                                break;
+                            case WorkerState.Unregistering:
+                                if (value == WorkerState.Unregistered) {
+                                    this.state = value;
+                                    return;
+                                }
+                                break;
+                            case WorkerState.Unregistered:
+                                if (value == WorkerState.Registering) {
+                                    this.state = value;
+                                    return;
+                                }
+                                break;
+                        }
+                        throw new Error("Invalid Assignment of State in Worker: From " + this.state + " to " + value);
+                    },
+                    configurable: false,
+                    enumerable: true
+                }
+            }, {
+            }),
+            enumerable: true,
+            writable: false,
+            configurable: false
+        }
+    });
+
+})(this.Workers);

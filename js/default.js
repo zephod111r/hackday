@@ -4,6 +4,11 @@
     "use strict";
     Application.onInitialise = function () {
         console.log("Initialising");
+
+        Workers.AddWorker('./js/Workers/ServiceWorker.js', "", function (worker) {
+            Application.worker = worker;
+        });
+
         var GameConstructor = Class.Design(function () {}, {}, {});
         Application.Game = new GameConstructor();
     }
